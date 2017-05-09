@@ -2,7 +2,7 @@
 
 - name: users > Template config
   template:
-    src:  "{{ manala_proftpd_users_template|ternary(manala_proftpd_users_template, 'users/default.j2') }}"
-    dest: "{{ manala_proftpd_users_file }}"
+    src:  "{{ proftpd_users_template|ternary(proftpd_users_template, 'users/default.j2') }}"
+    dest: "{{ proftpd_users_file }}"
     mode: 0600
-  with_items: "{{ manala_proftpd_users }}"
+  with_items: "{{ proftpd_users }}"

@@ -42,32 +42,32 @@ Role Variables
 
 | Name                                | Default             | Type    | Description                                 |
 | ----------------------------------- | ------------------- | ------- | ------------------------------------------- |
-| `manala_proftpd_configs`            | []                  | Array   | Configs                                     |
-| `manala_proftpd_configs_template`   | configs/empty.j2    | String  | Template to use to define a config set      |
-| `manala_proftpd_configs_exclusive`  | false               | Boolean | Exclusion of existings files                |
-| `manala_proftpd_configs_dir`        | /etc/proftpd/conf.d | String  | Path to the main configuration directory    |
-| `manala_proftpd_users_template`     | users/default.j2    | String  | Main user config template                   |
-| `manala_proftpd_users_file`         | /etc/ftpd.passwd    | String  | proFTPd user accounts definition file       |
-| `manala_proftpd_users`              | []                  | Array   | Array of proFTPd user accounts              |
+| `proftpd_configs`            | []                  | Array   | Configs                                     |
+| `proftpd_configs_template`   | configs/empty.j2    | String  | Template to use to define a config set      |
+| `proftpd_configs_exclusive`  | false               | Boolean | Exclusion of existings files                |
+| `proftpd_configs_dir`        | /etc/proftpd/conf.d | String  | Path to the main configuration directory    |
+| `proftpd_users_template`     | users/default.j2    | String  | Main user config template                   |
+| `proftpd_users_file`         | /etc/ftpd.passwd    | String  | proFTPd user accounts definition file       |
+| `proftpd_users`              | []                  | Array   | Array of proFTPd user accounts              |
 
 ### ProFTPd configuration
 
-The `manala_proftpd_configs_template` key will allow you to use differents main configuration templates. The role is shipped with basic templates :
+The `proftpd_configs_template` key will allow you to use differents main configuration templates. The role is shipped with basic templates :
 
 - empty (Simple template with no default configuration)
 - module (This configuration is used to handle modules definition (mod_ssl.c, mod_rewrite.c ...))
 
 #### Example:
 ```yaml
-manala_proftpd_configs_template: configs/module.j2
+proftpd_configs_template: configs/module.j2
 ```
 
-The `manala_proftpd_configs` key is made to allow you to define configuration based on choosen template format.
+The `proftpd_configs` key is made to allow you to define configuration based on choosen template format.
 
 #### Example:
 
 ```yaml
-manala_proftpd_configs:
+proftpd_configs:
   - file:                   proftpd.conf
     config:
       - ServerName:         "Manala"
@@ -94,18 +94,18 @@ manala_proftpd_configs:
 
 ### Exclusivity
 
-`manala_proftpd_configs_exclusive` allow you to clean up existing proFTPd configuration files into directory defined by the `manala_proftpd_configs_dir` key. Made to be sure no old or manualy created files will alter current configuration.
+`proftpd_configs_exclusive` allow you to clean up existing proFTPd configuration files into directory defined by the `proftpd_configs_dir` key. Made to be sure no old or manualy created files will alter current configuration.
 
 ```yaml
-manala_proftpd_configs_exclusive: true
+proftpd_configs_exclusive: true
 ```
 
 ### User account configuration
 
-The `manala_proftpd_users_template` key is made to define users allow to acces to FTP storage.
+The `proftpd_users_template` key is made to define users allow to acces to FTP storage.
 
 ```yaml
-manala_proftpd_users:
+proftpd_users:
     - name:             manala
       password:         "$1$KBijsXOEr4"b$9HEyZDLPnSe3SXq0n66oE3y/"
       home:             "/srv/my_dir"

@@ -5,7 +5,7 @@
 
   vars:
 
-    manala_proftpd_users:
+    proftpd_users:
         - name:     user-1
           password: $1$Z4eVi1jp$IQJdkHh28GGFbq9oSQR/b0 # mkpasswd --method=md5 --salt=Z4eVi1jp testpasswordproftpd
           home:     /tmp
@@ -16,7 +16,7 @@
           shell:    /bin/false
 
   roles:
-    - manala.proftpd
+    - proftpd
 
   tasks:
 

@@ -3,20 +3,19 @@
 # Install
 - include: install.yml
   tags:
-    - manala_proftpd
+    - proftpd
 
 # Configs
 - include: configs.yml
   tags:
-    - manala_proftpd
+    - proftpd
 
 # Users
 - include: users.yml
   tags:
-    - manala_proftpd
+    - proftpd
 
 # Services
 - include: services.yml
   tags:
-    - manala_proftpd
-    - manala.services
+    - proftpd
